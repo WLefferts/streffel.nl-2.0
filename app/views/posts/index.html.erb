@@ -1,1 +1,11 @@
-<p>123123</p>
+<% @posts.each do |post| %>
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+    <p><em>Posted on <%= post.created_at.strftime("%B %d, %Y") %></em></p>
+
+    <%= link_to "Update Post", edit_post_path(post), class: 'btn btn-primary' %>
+    <%= button_to "Delete Post", post_path(post), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %>
+    <hr>
+<% end %>
+
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
